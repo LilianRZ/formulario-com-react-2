@@ -13,23 +13,49 @@ class CreationGroups extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      value: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.mandarDados = this.handleSubmit.bind(this);
   }
-}
 
-this.handleChange = this.handleChange.bind(this);
-this.handleSubmit = this.handleSubmit.bind(this);
+  handleChange() {
+    this.setState({ value: this.target.value });
+  }
 
+  mandarDados() {
+    alert(`Dados enviados: ${this.state.value}`);
+  }
 
-handleChange();
-{
-  this.setState({ value: target.value });
-}
+   FifthComponent () {
+    const { valor } = this.state;
 
-handleSubmit();
-{
-  alert(`Dados enviados: ${this.state.value}`);
+    return (
+      <div>
+        <Firstcomponent value={valor} onChange={handleChange} required />
+        <SecondComponent value={valor} onChange={handleChange} required />
+        <ThirdComponent value={valor} onChange={handleChange} required />
+        <FourthComponent value={valor} onChange={handleChange} required />
+
+        <Button
+          variant="outlined"
+          startIcon={<DeleteIcon />}
+          style={{ margin: 10 }}
+          onClick={apagarDados}
+        >
+          Delete
+        </Button>
+        <Button
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={this.mandarDados}
+        >
+          Send
+        </Button>
+      </div>
+    );
+  }
 }
 
 ReactDOM.render(<CreationGroups />, document.querySelector("#root"));
@@ -43,36 +69,6 @@ function apagarDados() {
   this.setState({
     itemvalues: [{}],
   });
-}
-
-//(Component)
-
-function FifthComponent() {
-  const { valor } = this.state;
-
-  return (
-    <div>
-      <Firstcomponent value={valor} onChange={this.handleChange}  required />
-      <SecondComponent value={valor} onChange={this.handleChange}  required />
-      <ThirdComponent value={valor} onChange={this.handleChange}  required />
-      <FourthComponent value={valor} onChange={this.handleChange}  required />
-      <Button
-        variant="outlined"
-        startIcon={<DeleteIcon />}
-        style={{ margin: 10 }}
-        onClick={apagarDados}
-      >
-        Delete
-      </Button>
-      <Button
-        variant="contained"
-        endIcon={<SendIcon />}
-        onClick={this.handleSubmit}
-      >
-        Send
-      </Button>
-    </div>
-  );
 }
 
 export default FifthComponent;

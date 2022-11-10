@@ -1,6 +1,6 @@
 import { IMaskInput } from "react-imask";
 
-const ThirdComponent = (promps) => {
+const ThirdComponent = () => {
   return (
     <div>
       <label htmlFor="tel">Seu telefone aqui:</label>

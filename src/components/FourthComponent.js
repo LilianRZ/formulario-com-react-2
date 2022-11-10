@@ -1,4 +1,4 @@
-const FourthComponent = (promps) => {
+const FourthComponent = () => {
   return (
     <div>
       <label htmlFor="data">Seu nascimento aqui:</label>

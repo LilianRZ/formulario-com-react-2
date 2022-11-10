@@ -1,4 +1,4 @@
-const SecondComponent = (promps) => {
+const SecondComponent = () => {
   return (
     <div>
       <label htmlFor="end">Seu endereço aqui:</label>
