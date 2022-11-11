@@ -9,18 +9,20 @@ import ThirdComponent from "./ThirdComponent";
 import FourthComponent from "./FourthComponent";
 
 //botão enviar dados alert
-class CreationGroups extends React.Component {
-  constructor(props) {
-    super(props);
+
+class CreationGroups extends React.Component{
+  constructor(promps){
+    super(promps);
     this.state = {
       value: ""
-    };
+    }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.mandarDados = this.handleSubmit.bind(this);
+    this.meusInputs = this.meusInputs.bind(this);
+    this.mandarDados = this.mandarDados.bind(this);
+
+
   }
-
-  handleChange() {
+  meusInputs() {
     this.setState({ value: this.target.value });
   }
 
@@ -29,15 +31,16 @@ class CreationGroups extends React.Component {
   }
 
    FifthComponent () {
-    const { valor } = this.state;
 
+    const { valor } = this.state;
+  
     return (
       <div>
-        <Firstcomponent value={valor} onChange={handleChange} required />
-        <SecondComponent value={valor} onChange={handleChange} required />
-        <ThirdComponent value={valor} onChange={handleChange} required />
-        <FourthComponent value={valor} onChange={handleChange} required />
-
+        <Firstcomponent value={valor} onChange={this.meusInputs} required />
+        <SecondComponent value={valor} onChange={this.meusInputs} required />
+        <ThirdComponent value={valor} onChange={this.meusInputs} required />
+        <FourthComponent value={valor} onChange={this.meusInputs} required />
+  
         <Button
           variant="outlined"
           startIcon={<DeleteIcon />}
