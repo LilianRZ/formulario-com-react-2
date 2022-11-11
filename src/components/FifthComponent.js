@@ -2,53 +2,59 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import Firstcomponent from "./FirstComponent";
-import SecondComponent from "./SecondComponent";
-import ThirdComponent from "./ThirdComponent";
-import FourthComponent from "./FourthComponent";
+import { IMaskInput } from "react-imask";
 import { useState } from "react";
 
 //botão enviar dados alert
 
-export default function Form() {
-  const [form, setForm] = useState({
-    nameInput: "",
-    endInput: "",
-    telInput: "",
-    dataInput: "",
-  });
+function App() {
+  const [data, setdata] = useState("");
+  const [text1, settext1] = useState("");
+  const [text2, settext2] = useState("");
+  const [text3, settext3] = useState("");
 
-  function mandarDados(){
-    alert(
-      'dados enviados:' 
-    )
+
+  function exibirAlerta() {
+    
+    alert("Dados:" + text1 + " | "+ data + " | " + text2 + " | " + text3);
+  
   }
 
   return (
     <div>
-      <Firstcomponent
-        value={form.nameInput}
-        onChange={(e) => {
-          setForm({ ...form, nameInput: e.target.value });
-        }}
+     <label htmlFor="nome">Nome Completo:</label>
+      <input
+        type="text"
+        className="inputNome"
+        name="nome"
+        placeholder="Nome Completo"
+        onChange={(e) => settext3(e.target.value)}
       />
-      <SecondComponent
-        value={form.endInput}
-        onChange={(e) => {
-          setForm({ ...form, endInput: e.target.value });
-        }}
+
+      <label htmlFor="data">Nascimento aqui:</label>
+      <input
+        type="date"
+        classname="data"
+        name="data"
+        placeholder="Nascimento"
+        onChange={(e) => settext1(e.target.value)}
       />
-      <ThirdComponent
-        value={form.telInput}
-        onChange={(e) => {
-          setForm({ ...form, telInput: e.target.value });
-        }}
+
+      <label htmlFor="end">Endereço aqui:</label>
+      <input
+        type="text"
+        classname="inputEnd"
+        name="end"
+        placeholder="Endereço"
+        onChange={(e) => settext2(e.target.value)}
       />
-      <FourthComponent
-        value={form.dataInput}
-        onChange={(e) => {
-          setForm({ ...form, dataInput: e.target.value });
-        }}
+
+      <label htmlFor="tel">Telefone aqui:</label>
+      <IMaskInput
+        mask="(00) 00000-0000"
+        placeholder="Telefone"
+        name="tel"
+        onChange={(e) =>setdata(e.target.value)}
       />
 
       <Button
@@ -59,14 +65,15 @@ export default function Form() {
       >
         Delete
       </Button>
-      <Button variant="contained" endIcon={<SendIcon />} onClick={mandarDados}>
+      
+      <Button variant="contained" endIcon={<SendIcon />} onClick={exibirAlerta}>
         Send
       </Button>
     </div>
-
-
   );
 }
+
+export default App;
 
 //Botão de deletar
 
