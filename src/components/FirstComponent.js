@@ -1,4 +1,4 @@
-const FirstComponent = () => {
+function Firstcomponent() {
   return (
     <div>
       <label htmlFor="nome">Nome Completo:</label>

@@ -1,5 +1,4 @@
 import * as React from "react";
-import ReactDOM from "react-dom";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
@@ -7,61 +6,67 @@ import Firstcomponent from "./FirstComponent";
 import SecondComponent from "./SecondComponent";
 import ThirdComponent from "./ThirdComponent";
 import FourthComponent from "./FourthComponent";
+import { useState } from "react";
 
 //botão enviar dados alert
 
-class CreationGroups extends React.Component{
-  constructor(promps){
-    super(promps);
-    this.state = {
-      value: ""
-    }
+export default function Form() {
+  const [form, setForm] = useState({
+    nameInput: "",
+    endInput: "",
+    telInput: "",
+    dataInput: "",
+  });
 
-    this.meusInputs = this.meusInputs.bind(this);
-    this.mandarDados = this.mandarDados.bind(this);
-
-
-  }
-  meusInputs() {
-    this.setState({ value: this.target.value });
+  function mandarDados(){
+    alert(
+      'dados enviados:' 
+    )
   }
 
-  mandarDados() {
-    alert(`Dados enviados: ${this.state.value}`);
-  }
+  return (
+    <div>
+      <Firstcomponent
+        value={form.nameInput}
+        onChange={(e) => {
+          setForm({ ...form, nameInput: e.target.value });
+        }}
+      />
+      <SecondComponent
+        value={form.endInput}
+        onChange={(e) => {
+          setForm({ ...form, endInput: e.target.value });
+        }}
+      />
+      <ThirdComponent
+        value={form.telInput}
+        onChange={(e) => {
+          setForm({ ...form, telInput: e.target.value });
+        }}
+      />
+      <FourthComponent
+        value={form.dataInput}
+        onChange={(e) => {
+          setForm({ ...form, dataInput: e.target.value });
+        }}
+      />
 
-   FifthComponent () {
+      <Button
+        variant="outlined"
+        startIcon={<DeleteIcon />}
+        style={{ margin: 10 }}
+        onClick={apagarDados}
+      >
+        Delete
+      </Button>
+      <Button variant="contained" endIcon={<SendIcon />} onClick={mandarDados}>
+        Send
+      </Button>
+    </div>
 
-    const { valor } = this.state;
-  
-    return (
-      <div>
-        <Firstcomponent value={valor} onChange={this.meusInputs} required />
-        <SecondComponent value={valor} onChange={this.meusInputs} required />
-        <ThirdComponent value={valor} onChange={this.meusInputs} required />
-        <FourthComponent value={valor} onChange={this.meusInputs} required />
-  
-        <Button
-          variant="outlined"
-          startIcon={<DeleteIcon />}
-          style={{ margin: 10 }}
-          onClick={apagarDados}
-        >
-          Delete
-        </Button>
-        <Button
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={this.mandarDados}
-        >
-          Send
-        </Button>
-      </div>
-    );
-  }
+
+  );
 }
-
-ReactDOM.render(<CreationGroups />, document.querySelector("#root"));
 
 //Botão de deletar
 
@@ -73,5 +78,3 @@ function apagarDados() {
     itemvalues: [{}],
   });
 }
-
-export default FifthComponent;

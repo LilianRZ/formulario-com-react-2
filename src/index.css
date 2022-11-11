@@ -30,3 +30,9 @@ input{
   outline: 0;
   border: none;
 }
+
+
+p{
+  font-size: 30px;
+  color: black;
+}
